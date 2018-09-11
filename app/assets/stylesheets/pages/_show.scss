@@ -129,3 +129,18 @@ height: 400px;
 margin-bottom: 40px;
 }
 
+
+// -------------------------------------------
+
+.special-photo-wagon {
+  margin-bottom: 20px;
+  display: flex;
+  // align-items: center;
+
+  img {
+  max-height: 300px;
+  margin: 0 auto;
+  border-radius: 5px;
+  }
+
+}
