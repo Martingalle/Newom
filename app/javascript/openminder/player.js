@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     element.classList.add("opinion-track-selected");
     updateVoteInPlayer();
+    insertWagonImage();
     insertYouTubeLink();
     loadVideoById();
     playVideo();
@@ -53,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (first) {
       first.classList.add("opinion-track-selected");
       insertYouTubeLink();
+      insertWagonImage();
     }
   }
 
@@ -68,6 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('voteUpdated', updateVoteInPlayer, false);
   }
 
+
+  function insertWagonImage () {
+    const wagonImageDiv = document.querySelector(".special-photo-wagon");
+    let photoId = document.querySelector(".opinion-track-selected").dataset.photoId;
+    wagonImageDiv.innerHTML = `
+      <img src="/assets/${photoId}" alt="">
+      `;
+  }
   function insertYouTubeLink () {
     const playerShare = document.querySelector(".player-share")
     let youtubeId = document.querySelector(".opinion-track-selected").dataset.youtubeId;
@@ -159,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       selected.classList.remove("opinion-track-selected");
       previous.classList.add("opinion-track-selected");
       updateVoteInPlayer();
+      insertWagonImage();
       loadVideoById();
       playVideo();
   }
@@ -169,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
       selected.classList.remove("opinion-track-selected");
       next.classList.add("opinion-track-selected");
       updateVoteInPlayer();
+      insertWagonImage();
       loadVideoById();
       playVideo();
   }
