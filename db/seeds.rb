@@ -759,6 +759,36 @@ OPINIONS = [
   },
 ]
 
+
+  # OPINION 17 - pop - Geeks dont know good music
+  # ___________________________________________________________
+
+  {
+    ready: true,
+    name: "Geek dont know good music",
+    genre: 'pop',
+    description:
+    "I dont know what they listen to. But it is certainly not great ",
+    tracks: [
+      { youtube: 'zgffzlhIFnE',
+        genre: 'hipop',
+        name: "Sur la root",
+        artist: 'De palmas'
+      },
+      { youtube: 'S_xH7noaqTA',
+        genre: 'hipop',
+        name: 'Simple Formidable',
+        artist: 'Stromae'
+      },
+      { youtube: '9jWGbvemTag',
+        genre: 'hipop',
+        name: 'Multipath',
+        artist: 'Le 5\' element'
+      },
+    ]
+  },
+]
+
 puts '-------------------------------------------------------------------------'
 puts 'CLEANING DATABASE'
 
