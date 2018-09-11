@@ -12,7 +12,7 @@
       <h3><%= song %></h3>
       <p class='hidden-xs'>
         <% if @opinion.id == 18 %>
-          <strong><%= track.genre.name.upcase %> - added: <%= added %></strong>
+          <strong>Added: <%= added %></strong>
           <% else %>
           <strong><%= track.genre.name.upcase %> - added: <%= added %> by <%= track.creator.username %></strong>
           <% end %>
