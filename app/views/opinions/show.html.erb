@@ -95,11 +95,17 @@
             </div>
 
             <div class="col-xs-12 col-sm-6 opinion-right-column">
+
+              <% if @opinion.id == 18 %>
+                <div class="special-photo-wagon"></div>
+              <% end %>
               <div class="opinion-youtube-player hidden-xs">
                 <div id="player" data-songs-id=<%= @youtube_ids.to_json %>></div>
               </div>
-              <p class="beat-button-title">Got the perfect track to beat this cliché ?</p>
-              <p class="button-red beat-button" data-toggle="modal" data-target="#addATrack">add a track</p>
+              <% if @opinion.id != 18 %>
+                <p class="beat-button-title">Got the perfect track to beat this cliché ?</p>
+                <p class="button-red beat-button" data-toggle="modal" data-target="#addATrack">add a track</p>
+              <% end %>
             </div>
 
           </div>

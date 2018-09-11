@@ -1,7 +1,7 @@
 <div class="track-container">
 
 
-  <div class="track tracks-js" data-youtube-id="<%= track.youtube_id %>" data-song-name="<%= song %>" data-added-date="<%= added %>">
+  <div class="track tracks-js" data-youtube-id="<%= track.youtube_id %>" data-song-name="<%= song %>" data-added-date="<%= added %>" data-photo-id="<%= track.photo %>" >
     <% if track.photo.nil? %>
       <%= image_tag "https://goo.gl/t12qoj", class:"track-image hidden-xs"%>
     <% else %>
@@ -11,7 +11,11 @@
     <div class='track-body'>
       <h3><%= song %></h3>
       <p class='hidden-xs'>
-        <strong><%= track.genre.name.upcase %> - added: <%= added %> by <%= track.creator.username %></strong>
+        <% if @opinion.id == 18 %>
+          <strong><%= track.genre.name.upcase %> - added: <%= added %></strong>
+          <% else %>
+          <strong><%= track.genre.name.upcase %> - added: <%= added %> by <%= track.creator.username %></strong>
+          <% end %>
       </p>
     </div>
     <% if current_user %>
@@ -25,7 +29,9 @@
 
   <div>
     <% unless track.creator.photo.nil? %>
-      <%= image_tag "users/#{track.creator.photo}", class:"user-photo" %>
+      <% if @opinion.id != 18 %>
+        <%= image_tag "users/#{track.creator.photo}", class:"user-photo" %>
+      <% end %>
     <% end %>
   </div>
 
