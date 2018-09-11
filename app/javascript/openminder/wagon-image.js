@@ -6,9 +6,12 @@
       `;
   }
 
-
-  function hidePlayer () {
-    const wagonPlayer = document.querySelector("#player");
-    wagonPlayer.classList.add("hidden");
+  function growScrollbar () {
+    const wagonScrollbar = document.querySelector(".scrollbar");
+    const playerId = document.querySelector(".tracks-js").dataset.opinionId;
+    if (playerId == 18) {
+      wagonScrollbar.classList.add("grow-scrollbar");
+    }
   }
-  export { insertWagonImage };
+
+  export { insertWagonImage, growScrollbar };
