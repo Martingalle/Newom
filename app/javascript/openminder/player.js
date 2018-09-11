@@ -1,4 +1,5 @@
 import YouTubePlayer from 'youtube-player';
+import { insertWagonImage } from '../openminder/wagon-image';
 
 let player;
 
@@ -70,14 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('voteUpdated', updateVoteInPlayer, false);
   }
 
-
-  function insertWagonImage () {
-    const wagonImageDiv = document.querySelector(".special-photo-wagon");
-    let photoId = document.querySelector(".opinion-track-selected").dataset.photoId;
-    wagonImageDiv.innerHTML = `
-      <img src="/assets/${photoId}" alt="">
-      `;
-  }
   function insertYouTubeLink () {
     const playerShare = document.querySelector(".player-share")
     let youtubeId = document.querySelector(".opinion-track-selected").dataset.youtubeId;
