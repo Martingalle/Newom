@@ -1036,7 +1036,12 @@ OPINIONS.each do |opinion|
         approved: rand(-1..1)
       )
       print (index + 1).to_s << ' - ' << track_instance.name
-      rand(VOTES_BY_TRACK_MIN..VOTES_BY_TRACK_MAX).times do
+      if Opinion.last.id == 18
+        nombre_votes = 0
+      else
+        nombre_votes = rand(VOTES_BY_TRACK_MIN..VOTES_BY_TRACK_MAX)
+      end
+        nombre_votes.times do
         user = User.order('RANDOM()').first
         while Vote.where(user: user, track: track_instance).any?
           user = User.order('RANDOM()').first
