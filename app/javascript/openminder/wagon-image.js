@@ -1,9 +1,11 @@
   function insertWagonImage () {
     const wagonImageDiv = document.querySelector(".special-photo-wagon");
+    if (wagonImageDiv) {
     let photoId = document.querySelector(".opinion-track-selected").dataset.photoId;
     wagonImageDiv.innerHTML = `
       <img src="/assets/${photoId}" alt="">
       `;
+    }
   }
 
   function growScrollbar () {
