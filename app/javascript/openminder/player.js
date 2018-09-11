@@ -1,5 +1,5 @@
 import YouTubePlayer from 'youtube-player';
-import { insertWagonImage } from '../openminder/wagon-image';
+import { insertWagonImage, growScrollbar } from '../openminder/wagon-image';
 
 let player;
 
@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateVoteInPlayer();
     insertWagonImage();
     insertYouTubeLink();
+    growScrollbar();
     loadVideoById();
     playVideo();
   }
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (first) {
       first.classList.add("opinion-track-selected");
       insertYouTubeLink();
+      growScrollbar();
       insertWagonImage();
     }
   }
@@ -163,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       previous.classList.add("opinion-track-selected");
       updateVoteInPlayer();
       insertWagonImage();
+      growScrollbar();
       loadVideoById();
       playVideo();
   }
@@ -175,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updateVoteInPlayer();
       insertWagonImage();
       loadVideoById();
+      growScrollbar();
       playVideo();
   }
 

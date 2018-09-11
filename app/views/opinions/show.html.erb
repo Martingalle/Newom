@@ -24,32 +24,33 @@
           <% end %>
         </div>
       </div>
-      <div class="opinion-description">
-        <p><%= @opinion.description %></p>
 
-        <% unless @opinion.related_opinions.without(@opinion).empty? %>
-          <span id='relatedOpinions' value='hide/show' class="related-opinions"> See Related Opinions</span>
-        <% end %>
-      </div>
 
-      <div class="opinion-genres">
-
-        <%= link_to :controller => 'opinions', :query => @opinion.genre.name do%>
-          <button class="button-small"><%= @opinion.genre.name %></button>
-        <% end %>
-
-        <% unless @opinion.main_genre.nil? || @opinion.main_genre == @opinion.genre %>
-          <%= link_to :controller => 'opinions', :query => @opinion.main_genre.name do%>
-            <button class="button-small-light"><%= @opinion.main_genre.name %></button>
+      <% if @opinion.id != 18 %>
+        <div class="opinion-description">
+          <p><%= @opinion.description %></p>
+          <% unless @opinion.related_opinions.without(@opinion).empty? %>
+            <span id='relatedOpinions' value='hide/show' class="related-opinions"> See Related Opinions</span>
           <% end %>
-        <% end %>
-
-        <% unless @opinion.secondary_genre.nil? || @opinion.secondary_genre == @opinion.genre %>
-          <%= link_to :controller => 'opinions', :query => @opinion.secondary_genre.name do%>
-            <button class="button-small-light"><%= @opinion.secondary_genre.name %></button>
+        </div>
+        <div class="opinion-genres">
+          <%= link_to :controller => 'opinions', :query => @opinion.genre.name do%>
+            <button class="button-small"><%= @opinion.genre.name %></button>
           <% end %>
-        <% end %>
-      </div>
+
+          <% unless @opinion.main_genre.nil? || @opinion.main_genre == @opinion.genre %>
+            <%= link_to :controller => 'opinions', :query => @opinion.main_genre.name do%>
+              <button class="button-small-light"><%= @opinion.main_genre.name %></button>
+            <% end %>
+          <% end %>
+
+          <% unless @opinion.secondary_genre.nil? || @opinion.secondary_genre == @opinion.genre %>
+            <%= link_to :controller => 'opinions', :query => @opinion.secondary_genre.name do%>
+              <button class="button-small-light"><%= @opinion.secondary_genre.name %></button>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
 
     <div id='relatedOpinionsCards' style="display:none">
       <% if @opinion.related_opinions.without(@opinion).empty? %>
@@ -74,9 +75,11 @@
         <div class="opinion-player">
           <div class="row">
             <div class="col-xs-12 col-sm-6 opinion-tracks">
-              <div class="opinion-tracks-title">
-                <h2>Here are the tracks that have been nicely proposed by our community to crush your vision of music</h2>
-              </div>
+              <% if @opinion.id != 18 %>
+                <div class="opinion-tracks-title">
+                  <h2>Here are the tracks that have been nicely proposed by our community to crush your vision of music</h2>
+                </div>
+              <% end %>
               <!-- List of songs linked to an opinion -->
 
               <div class="scrollbar hello-tracks">
