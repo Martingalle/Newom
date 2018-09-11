@@ -1,9 +1,9 @@
   function insertWagonImage () {
     const wagonImageDiv = document.querySelector(".special-photo-wagon");
     if (wagonImageDiv) {
-    let photoId = document.querySelector(".opinion-track-selected").dataset.photoId;
+    let photoId = document.querySelector(".opinion-track-selected").dataset.photoId.replace('wagon/','');
     wagonImageDiv.innerHTML = `
-      <img src="/assets/${photoId}" alt="">
+      <img src="http://www.mind-test.fr/wp-content/uploads/2018/09/${photoId}" alt="">
       `;
     }
   }
