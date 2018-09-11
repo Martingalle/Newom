@@ -584,7 +584,6 @@ OPINIONS = [
   # OPINION 11 - Rock - Le Rock n'a pas changé depuis les années 70
   # ___________________________________________________________
   {
-  ready: false,
     ready: true,
     name: "Rock has not changed since the 70s",
     genre: 'rock',
@@ -757,8 +756,6 @@ OPINIONS = [
       },
     ]
   },
-]
-
 
   # OPINION 17 - pop - Geeks dont know good music
   # ___________________________________________________________
@@ -770,20 +767,125 @@ OPINIONS = [
     description:
     "I dont know what they listen to. But it is certainly not great ",
     tracks: [
-      { youtube: 'zgffzlhIFnE',
-        genre: 'hipop',
-        name: "Sur la root",
-        artist: 'De palmas'
+      { youtube: 'wQP9XZc2Y_c',
+        genre: 'hip hop',
+        name: 'Libérée, délivrée',
+        artist: 'Sarah Lauren des neiges',
+        photo: 'wagon/20.png'
       },
-      { youtube: 'S_xH7noaqTA',
-        genre: 'hipop',
-        name: 'Simple Formidable',
-        artist: 'Stromae'
+      { youtube: '4TP3u0rNkys',
+        genre: 'hip hop',
+        name: 'L\'API c\'est fini',
+        artist: 'Thibault Villard',
+        photo: 'wagon/19.png'
+      },
+      { youtube: '59Q_lhgGANc',
+        genre: 'hip hop',
+        name: 'Makeback',
+        artist: 'JaiM',
+        photo: 'wagon/18.png'
+      },
+      { youtube: 'JGwWNGJdvx8',
+        genre: 'hip hop',
+        name: 'Shape of you',
+        artist: 'Thomas Brown</head> Sheeran',
+        photo: 'wagon/17.png'
+      },
+      { youtube: '27ynOX-ZYA8',
+        genre: 'hip hop',
+        name: 'Kev lève toi',
+        artist: 'Julie Pietri',
+        photo: 'wagon/16.png'
+      },
+      { youtube: '9RBzsjga73s',
+        genre: 'hip hop',
+        name: 'Titled',
+        artist: 'Christine and the Queenstagram',
+        photo: 'wagon/15.png'
+      },
+      { youtube: 'dly6p4Fu5TE',
+        genre: 'hip hop',
+        name: 'Jenni from the Block',
+        artist: 'Jennifer Vermorails',
+        photo: 'wagon/14.png'
+      },
+      { youtube: 'SA3-mVGc8wA',
+        genre: 'hip hop',
+        name: 'I want you back (office)',
+        artist: 'Json Five',
+        photo: 'wagon/13.png'
+      },
+      { youtube: 'RrxePKps87k',
+        genre: 'hip hop',
+        name: 'Red Right Hand',
+        artist: 'Geek Kev and the good db:seed',
+        photo: 'wagon/12.png'
+      },
+      { youtube: '1plPyJdXKIY',
+        genre: 'hip hop',
+        name: 'Regulate any (CSS) styles',
+        artist: 'Warren JiBé',
+        photo: 'wagon/11.png'
+      },
+      { youtube: 'n2KpJV4jHUA',
+        genre: 'hip hop',
+        name: 'bandolheroku',
+        artist: 'Moia La Squale',
+        photo: 'wagon/10.png'
+      },
+      { youtube: 'meCZ5hWNRFU',
+        genre: 'hip hop',
+        name: 'Movie theme',
+        artist: 'O Browser where are thou',
+        photo: 'wagon/9.png'
+      },
+      { youtube: 's7L2PVdrb_8',
+        genre: 'hip hop',
+        name: 'TV show theme',
+        artist: 'Game of Drones',
+        photo: 'wagon/8.png'
+      },
+      { youtube: 'CduA0TULnow',
+        genre: 'hip hop',
+        name: 'Oups i Pundit it again',
+        artist: 'Megan Spears',
+        photo: 'wagon/7.png'
+      },
+      { youtube: '6hV-UnrC9tU',
+        genre: 'hip hop',
+        name: 'Je dis Gem',
+        artist: 'M',
+        photo: 'wagon/6.png'
+      },
+      { youtube: '41GB9BHer5I',
+        genre: 'hip hop',
+        name: 'L\'homme qui n\'a jamais peur' ,
+        artist: 'Davy Sprockets',
+        photo: 'wagon/5.png'
+      },
+      { youtube: 'TJAfLE39ZZ8',
+        genre: 'hip hop',
+        name: 'Back to Slack',
+        artist: 'Remy Winehouse',
+        photo: 'wagon/4.png'
       },
       { youtube: '9jWGbvemTag',
-        genre: 'hipop',
+        genre: 'hip hop',
         name: 'Multipath',
-        artist: 'Le 5\' element'
+        artist: 'Le 5\' element',
+        photo: 'wagon/3.png'
+      },
+      { youtube: 'S_xH7noaqTA',
+        genre: 'hip hop',
+        name: 'Simple Formidable',
+        artist: 'Stromae',
+        photo: 'wagon/2.png'
+      },
+      { youtube: 'zgffzlhIFnE',
+        genre: 'hip hop',
+        name: "Sur la root",
+        artist: 'De palmas',
+        photo: 'wagon/1.png'
       },
     ]
   },
@@ -918,10 +1020,15 @@ OPINIONS.each do |opinion|
     opinion[:tracks].each_with_index do |track, index|
       user = User.order('RANDOM()').first
       track[:genre].blank? ? genre_id = nil : genre_id = Genre.where(name: track[:genre]).first.id
+      if track[:photo].nil?
+        photo = "https://i.ytimg.com/vi/#{track[:youtube]}/mqdefault.jpg"
+      elsif
+        photo = track[:photo]
+      end
       track_instance = Track.create!(
         name: track[:artist] << ' - ' << track[:name],
         artist: track[:artist],
-        photo: "https://i.ytimg.com/vi/#{track[:youtube]}/mqdefault.jpg",
+        photo: photo,
         youtube_id: track[:youtube],
         creator_id: user.id,
         genre_id: genre_id,
